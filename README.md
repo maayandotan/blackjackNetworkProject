@@ -10,6 +10,10 @@ A complete networked multiplayer Blackjack game built in Python, featuring custo
 * **Concurrent Server**: The server utilizes threading to handle multiple clients concurrently, allowing multiple separate games/tables to run simultaneously.
 * **Object-Oriented Game Logic**: Implements standard Blackjack rules (Hit, Stand, Dealer rules, win/loss/tie conditions) using clean, modular OOP design (`deck`, `card`, `table`, `dealer`, `player`).
 
+## 🧰 Tech Stack
+
+* **Python 3** standard library only: `socket` (TCP and UDP broadcast), `threading`, and byte-level `int.to_bytes` packing. No third-party dependencies.
+
 ## 📁 Architecture Overview
 
 * **`server/`**: Contains the core game logic (`deck.py`, `table.py`, `dealer.py`, `player.py`), the game manager, and the server-side networking components (`run_server.py`, `UdpMan.py`).
@@ -41,5 +45,15 @@ The `msg_format.py` defines a strict byte-level communication protocol. Each pac
 * **Client Payload (TCP)**: Client decision to 'Hit' or 'Stand' (`0x4`).
 * **Server Payload (TCP)**: Server sends card data (suit, rank) and round results (`0x5`).
 
----
-*This project was developed to showcase advanced skills in networking, multi-threading, custom protocol design, and object-oriented programming in Python. Perfect for an engineering portfolio.*
+## 👥 Development Process
+
+* **Team:** 3 developers on a university networking course assignment.
+* **Workflow:** separate branches per component (`server`, `gameMan`, `netWork_m`, and others), merged into `main` through pull requests.
+* **Spec conformance:** the protocol constants (magic cookie, message types, UDP port 13122) follow the course specification, so this client and server can interoperate with other teams' implementations.
+
+## 🙋 My Contributions
+
+I'm Maayan Dotan. I worked on the server-side game model and on protocol conformance:
+
+* **Game model:** implemented the deck and the player hit/stand logic, removing duplicated card handling in the player base class.
+* **Spec fixes:** corrected the UDP broadcast port and the card-value mapping to match the assignment specification.
